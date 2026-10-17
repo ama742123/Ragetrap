@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#101015">
+  <meta name="description" content="RageTrap — 100 levels, 300 stages. Can you beat the traps?">
+  <title>RageTrap — Play If You Dare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <button class="brand" id="homeBtn" aria-label="Home"><span class="brand-mark">R</span><span>RAGE<span class="red">TRAP</span></span></button>
+      <div class="top-stats"><span id="progressTop">LEVEL 1 · STAGE 1</span><span class="tiny-dot"></span><span id="deathsTop">DEATHS 0</span></div>
+      <button class="icon-btn" id="soundBtn" aria-label="Toggle sound" aria-pressed="true">♫ SFX <span id="soundLabel">ON</span></button>
+    </header>
+
+    <section id="homeScreen" class="screen home-screen">
+      <div class="hero">
+        <div class="eyebrow"><span class="pulse"></span> THE TRAP PLATFORMER</div>
+        <h1>RAGE<span>TRAP</span></h1>
+        <p class="tagline">100 LEVELS. 300 STAGES. <strong>ZERO MERCY.</strong></p>
+        <p class="challenge">Think you're good? Prove it.<br>Every step could be your last.</p>
+        <button class="primary-btn" id="playBtn">PLAY IF YOU DARE <span>↗</span></button>
+        <button class="secondary-btn" id="continueBtn">CONTINUE RUN</button>
+        <div class="mini-stats">
+          <div><b id="homeLevels">0 / 100</b><span>LEVELS CLEARED</span></div>
+          <div><b id="homeStages">0 / 300</b><span>STAGES CLEARED</span></div>
+          <div><b id="homeDeaths">0</b><span>TOTAL DEATHS</span></div>
+        </div>
+      </div>
+      <div class="home-bottom">
+        <button class="text-btn" id="levelsBtn">▦ SELECT LEVEL</button>
+        <button class="text-btn" id="howBtn">ⓘ HOW TO PLAY</button>
+        <p>WARNING: YOUR PATIENCE WILL BE TESTED.</p>
+      </div>
+    </section>
+
+    <section id="levelScreen" class="screen hidden">
+      <div class="section-head"><button class="back-btn" data-back="homeScreen">← BACK</button><div><p class="eyebrow">CHOOSE YOUR PAIN</p><h2>LEVEL SELECT</h2></div></div>
+      <p class="muted">Locked levels unlock as you clear all 3 stages of the previous level.</p>
+      <div id="levelGrid" class="level-grid"></div>
+    </section>
+
+    <section id="howScreen" class="screen hidden">
+      <div class="section-head"><button class="back-btn" data-back="homeScreen">← BACK</button><div><p class="eyebrow">READ. LEARN. SUFFER.</p><h2>HOW TO PLAY</h2></div></div>
+      <div class="instructions">
+        <div><b>MOVE</b><p>Use ◀ ▶ or A / D to move. On a keyboard, use the arrow keys too.</p></div>
+        <div><b>JUMP</b><p>Tap JUMP, press Space, W or ↑. Hold briefly for a higher jump.</p></div>
+        <div><b>WATCH THE FLOOR</b><p>Some tiles collapse, spikes can appear, and moving hazards punish bad timing.</p></div>
+        <div><b>THREE STAGES PER LEVEL</b><p>Reach the glowing exit in all 3 stages to unlock the next level. Your progress saves on this device.</p></div>
+      </div>
+      <p class="muted small">Tip: Some traps are designed to surprise you. Observe, retry, and learn the timing.</p>
+    </section>
+
+    <section id="gameScreen" class="screen hidden game-screen">
+      <div class="game-heading">
+        <button class="back-btn" id="quitBtn">← MENU</button>
+        <div class="level-label"><span id="levelName">LEVEL 1</span><small id="stageName">STAGE 1 / 3</small></div>
+        <div class="game-metrics"><span>☠ <b id="deathsGame">0</b></span><span>BEST <b id="bestGame">—</b></span></div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="gameCanvas" width="900" height="500" aria-label="RageTrap game area"></canvas>
+        <div id="overlay" class="overlay hidden">
+          <div class="overlay-card"><p class="eyebrow" id="overlayEyebrow">NICE TRY</p><h2 id="overlayTitle">TRAPPED!</h2><p id="overlayText">The floor had other plans.</p><button id="overlayBtn" class="primary-btn">TRY AGAIN ↻</button><button id="overlayMenu" class="secondary-btn">BACK TO MENU</button></div>
+        </div>
+      </div>
+      <div class="game-footer"><span id="hintText">Reach the exit. Trust nothing.</span><span id="attemptText">ATTEMPT 1</span></div>
+      <div class="touch-controls">
+        <div class="move-controls"><button class="control-btn" id="leftBtn" aria-label="Move left">◀</button><button class="control-btn" id="rightBtn" aria-label="Move right">▶</button></div>
+        <button class="control-btn jump-btn" id="jumpBtn">JUMP ⤴</button>
+      </div>
+    </section>
+
+    <section id="winScreen" class="screen hidden win-screen">
+      <div class="win-icon">✦</div><p class="eyebrow">IMPOSSIBLE? NOT FOR YOU.</p><h2 id="winTitle">STAGE CLEARED!</h2><p id="winText">One step closer. One step more dangerous.</p>
+      <div class="win-stats"><div><b id="winDeaths">0</b><span>DEATHS TOTAL</span></div><div><b id="winProgress">1 / 300</b><span>STAGES CLEARED</span></div></div>
+      <button class="primary-btn" id="nextBtn">NEXT STAGE →</button><button class="secondary-btn" id="winMenu">MAIN MENU</button>
+    </section>
+    <footer class="site-footer">RAGETRAP <span>·</span> BUILT TO TEST YOUR NERVES</footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
