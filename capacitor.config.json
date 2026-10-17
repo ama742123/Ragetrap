@@ -1,0 +1,9 @@
+
+{
+  "appId": "com.ragetrap.game",
+  "appName": "RageTrap",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
